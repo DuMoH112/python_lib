@@ -115,6 +115,26 @@ def sortMerge(array:list):
         
     return array
 
+def sortQuick(nums:list):
+    """O(n log n)"""
+    if len(nums) <= 1:
+        return nums
+    
+    q = random.choice(nums)
+    s_nums = []
+    m_nums = []
+    e_nums = []
+
+    for n in nums:
+        if n < q:
+            s_nums.append(n)
+        elif n > q:
+            m_nums.append(n)
+        else:
+            e_nums.append(n)
+
+    return sortQuick(s_nums) + e_nums + sortQuick(m_nums)
+
 def main():
     findNumber = int(input("Какое число найти: "))
     __value = 10000
